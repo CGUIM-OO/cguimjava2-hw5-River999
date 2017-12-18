@@ -2,8 +2,8 @@ import java.util.ArrayList;
 
 public abstract class Person {
 	private ArrayList<Card> oneRoundCard;
-	public void setOneRoundCard(ArrayList<Card> cards){
-		oneRoundCard=cards;
+	public void setOneRoundCard(ArrayList<Card> cards){//設定此牌局所得到的卡 setter
+		oneRoundCard=cards;//為oneRoundCard之setter，供後續程式使用
 	}
 	public ArrayList<Card> getOneRoundCard(){
 		return oneRoundCard;
@@ -13,14 +13,14 @@ public abstract class Person {
 		int Ace_count = 0;
 		int total_value = 0;
 		for (Card c : oneRoundCard) {
-			if (Ace_count == 0 && c.getRank() == 1) {
+			if (Ace_count == 0 && c.getRank() == 1) {//如果牌是Ace的話算1
 				Ace_count = 1;
 				continue;
 			} else {
 				if (c.getRank() == 11 || c.getRank() == 12 || c.getRank() == 13)
-					total_value += 10;
+					total_value += 10;//如果牌是J Q K的話，點數算10
 				else
-					total_value += c.getRank();
+					total_value += c.getRank();//如果是1-10就正常算
 			}
 		}
 		if (Ace_count != 0) {
@@ -31,7 +31,7 @@ public abstract class Person {
 			}
 
 		}
-		return total_value;
+		return total_value;//回傳此牌局所得的卡點數加總
 	}
 	public boolean hasAce() {
 		boolean hasAce= false;
@@ -42,7 +42,7 @@ public abstract class Person {
 		}
 		return hasAce;
 	}
-	public void printAllCard(){
+	public void printAllCard(){//供後續程式使用
 		for(Card c : oneRoundCard){
 			c.printCard();
 		}
